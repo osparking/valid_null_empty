@@ -34,6 +34,21 @@ class MyDiaryTest {
   }
   
   @Test
+  void test3_1() {
+    var diary = new MyDiary();
+    diary.setContent("");
+    diary.setTitle("  ");
+    /**
+     * 검증 오류 발생 전무
+     * > title 은 null 아이고, 빈(empty) 것도 아님. 다만, 공백문자임. 
+     * > content 는 빈문자열이 있으므로 null 아님.
+     */
+    Set<ConstraintViolation<MyDiary>> violations = validator.validate(diary);
+    
+    assertThat(violations.size()).isEqualTo(0);    
+  }
+  
+  @Test
   void test3() {
     var diary = new MyDiary();
     diary.setContent("");
